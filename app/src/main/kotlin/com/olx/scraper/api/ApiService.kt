@@ -12,7 +12,11 @@ interface ApiService {
     fun getListing(@Path("id") id: Int): Call<Listing>
 
     @GET("api/search")
-    fun search(@Query("q") query: String): Call<ListingsResponse>
+    fun search(
+        @Query("q") query: String,
+        @Query("category") category: String? = null,
+        @Query("marketplace") marketplace: String? = null
+    ): Call<ListingsResponse>
 
     @GET("api/health")
     fun health(): Call<HealthResponse>
