@@ -27,6 +27,9 @@ interface ApiService {
     @GET("api/categories")
     fun getCategories(@Query("marketplace") marketplace: String): Call<CategoriesResponse>
 
+    @GET("api/olx/categories")
+    fun getOlxCategories(@Query("refresh") refresh: Boolean? = null): Call<OlxCategoriesResponse>
+
     @POST("api/auth/login")
     fun login(@Body request: LoginRequest): Call<AuthResponse>
 
@@ -73,6 +76,24 @@ data class Category(
 data class CategoriesResponse(
     val count: Int,
     val results: List<Category>
+)
+
+data class OlxSubcategory(
+    val key: String,
+    val label: String,
+    val path: String
+)
+
+data class OlxCategory(
+    val key: String,
+    val label: String,
+    val path: String,
+    val subcategories: List<OlxSubcategory>
+)
+
+data class OlxCategoriesResponse(
+    val count: Int,
+    val results: List<OlxCategory>
 )
 
 data class LoginRequest(
