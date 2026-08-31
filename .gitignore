@@ -5,3 +5,7 @@ app/build/
 local.properties
 *.iml
 .DS_Store
+backend/.venv/
+backend/__pycache__/
+**/__pycache__/
+*.py[cod]
